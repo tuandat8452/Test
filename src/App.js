@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { actAddJob, actHandleChange } from "./actions";
 import "./App.css";
@@ -9,14 +9,13 @@ function App() {
   const listTodo = useSelector(state => state.ToDoReducer.toDoList);
   const toDoInput = useSelector(state => state.ToDoReducer.toDoInput);
   
-
+  const input = useRef();
   const dispatch = useDispatch();
   
   const handleAddList = () => {
     dispatch(actAddJob(toDoInput));
-   
+    input.current.focus();
   }  
-
 
   return (
     <div className="container pt-3 app">
@@ -32,7 +31,7 @@ function App() {
           <h2>DASHBOARD</h2>
         </div>
         <div className="add-new-list d-flex">
-          <input className="pl-2" placeholder="New To-do List" onChange={e =>  dispatch(actHandleChange(e.target.value))} />
+          <input ref={input} className="pl-2" placeholder="New To-do List" onChange={e =>  dispatch(actHandleChange(e.target.value))} />
           <button className="btn ml-2" onClick={handleAddList}>Create</button>
         </div>
       </div>

@@ -8,6 +8,9 @@
     background-color: #f7f8fa;
     height: 100vh;
 }
+
+
+
 .app .content-top .title h2 {
     color: #205c9d;
     margin-bottom: 0;
@@ -27,12 +30,14 @@
 .app .item-todo .item-title  {
     background-color: #205c9d;
     color: #fff;
+    padding: 10px 6px;
 }
 
 .app .item-todo .item-title h3 {
     font-size: 18px;
     padding: 5px 10px;
     margin-bottom: 0;
+    cursor: pointer;
 }
 
 .app .item-todo .item-title .item-title-icon i {
