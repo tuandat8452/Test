@@ -1,13 +1,40 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.app {
+    background-color: #f7f8fa;
+    height: 100vh;
+}
+.app .content-top .title h2 {
+    color: #205c9d;
+    margin-bottom: 0;
+}
+
+.app .content-top .add-new-list button {
+    background-color: #205c9d;
+    color: #fff;
+}
+
+.app .item-todo {
+    border: 1px solid #ddd;
+    height: 300px;
+    background-color: #fff;
+}
+
+.app .item-todo .item-title  {
+    background-color: #205c9d;
+    color: #fff;
+}
+
+.app .item-todo .item-title h3 {
+    font-size: 18px;
+    padding: 5px 10px;
+    margin-bottom: 0;
+}
+
+.app .item-todo .item-title .item-title-icon i {
+    cursor: pointer;
 }
