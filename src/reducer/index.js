@@ -32,12 +32,15 @@ const ToDoReducer = (state = initialState, action) => {
       };
 
     case types.ADD_ITEM_JOB:
-      const newTodos = state.toDoList.map((todo) => {
-        return [...todo.openItems, action.payload];
+      const newTodos = state.toDoList.map((todo,index) => {
+       if(index === action.payload.index) {
+         const todoItem = [...todo.openItems];
+         todoItem.push(action.payload.toDoInput);
+        return {...todo, openItems:todoItem};
+       }
+       return todo;
       });
-      console.log(newTodos);
-      return { ...state };
-    //   return {...state, };
+      return { ...state, toDoList:newTodos };
 
     case types.DELETE_JOB:
       const fakeTodoList = [...state.toDoList];
@@ -53,16 +56,13 @@ const ToDoReducer = (state = initialState, action) => {
       return { ...state, toDoList: [...state.toDoList] };
 
     case types.UPDATE_TITLE_JOB:
-      const newTitle = action.payload;
-      const titleIndex = state.toDoList.findIndex(
-        (todo) => todo.name === newTitle
-      );
-      console.log(titleIndex);
-      if (titleIndex >= 0) {
-        const cloneListToDo = [...state.toDoList];
-        cloneListToDo[titleIndex].name = newTitle;
-      }
-      return { ...state};
+      const updateTodo = state.toDoList.map((todo,index) => {
+        if(index === action.payload.index) {
+          return {...todo, name:action.payload.showTitle};
+        }
+        return todo;
+      });
+      return { ...state, toDoList: updateTodo};
 
     default:
       return { ...state };

@@ -38,23 +38,22 @@ function ToDoItem({ listTodo, index }) {
       setShowAddItem(false);
     }
     if (e.key === "Enter") {
-      dispatch(actAddItemJob(toDoInput));
+      dispatch(actAddItemJob({index,toDoInput}));
     }
   };
 
   const handleClickTitle = (title) => {
     setShowTitle(true);
     setValueTitle(title);
-
   };
 
   const handleChangeInput = (e) => {
-    dispatch(actHandleChange(e.target.value));
+    setShowTitle(e.target.value);
   };
 
-  const handleSaveTitle = () => {
+  const handleSaveTitle = (index) => {
     setShowTitle(false);
-    dispatch(actUpdateTitle(toDoInput));
+    dispatch(actUpdateTitle({index,showTitle}));
   };
 
   return (
@@ -87,13 +86,12 @@ function ToDoItem({ listTodo, index }) {
             onChange={handleChangeInput}
           />
           <div className="item-title-icon">
-            <i className="fa fa-save pr-3" onClick={handleSaveTitle} />
+            <i className="fa fa-save pr-3" onClick={() => {handleSaveTitle(index)}} />
           </div>
         </div>
       )}
       {showAddItem ? (
         <div className="px-4 my-2">
-          {" "}
           <input
             onKeyDown={handleKeyDown}
             className="px-2 py-1"
